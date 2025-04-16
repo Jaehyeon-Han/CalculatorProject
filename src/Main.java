@@ -4,6 +4,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean repeat = false;
+        double result = 0.0;
+
+        Calculator calc = new Calculator();
 
         do {
             System.out.println("Enter number: ");
@@ -13,15 +16,8 @@ public class Main {
             System.out.println("Enter operand: ");
             char operand = sc.nextLine().charAt(0);
 
-            double result = 0.0;
             try {
-                switch(operand) {
-                    case '+': result = number1 + number2; break;
-                    case '-': result = number1 - number2; break;
-                    case '/': result = (double) number1 / number2; break;
-                    case '*': result = number1 * number2; break;
-                    default: throw new Exception("Unknown operand");
-                }
+                result = calc.evaluateExpression(number1, number2, operand);
                 System.out.println("Result: " + result);
             } catch (Exception e) {
                 System.err.println(e.getMessage());
