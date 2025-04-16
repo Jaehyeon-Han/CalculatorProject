@@ -4,9 +4,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter number: ");
-        int number1 = sc.nextInt();
+        int number1 = Integer.parseInt(sc.nextLine());
         System.out.println("Enter number: ");
-        int number2 = sc.nextInt();
+        int number2 = Integer.parseInt(sc.nextLine());
         System.out.println("Enter operand: ");
         char operand = sc.nextLine().charAt(0);
 
@@ -22,6 +22,8 @@ public class Main {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
+
+        System.out.println(result);
 
     }
 }
