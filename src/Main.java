@@ -13,20 +13,20 @@ public class Main {
             System.out.println("Enter operand: ");
             char operand = sc.nextLine().charAt(0);
 
-            int result = 0;
+            double result = 0.0;
             try {
                 switch(operand) {
                     case '+': result = number1 + number2; break;
                     case '-': result = number1 - number2; break;
-                    case '/': result = number1 / number2; break;
+                    case '/': result = (double) number1 / number2; break;
                     case '*': result = number1 * number2; break;
                     default: throw new Exception("Unknown operand");
                 }
+                System.out.println("Result: " + result);
             } catch (Exception e) {
                 System.err.println(e.getMessage());
             }
 
-            System.out.println("Result: " + result);
             System.out.println("Enter \"exit\" to stop");
             repeat = !sc.nextLine().equals("exit");
         } while(repeat);
