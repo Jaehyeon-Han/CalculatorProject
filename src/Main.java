@@ -1,3 +1,7 @@
+import calculator.ArithmeticCalculator;
+import calculator.Calculator;
+import operator.Operator;
+
 import java.util.Scanner;
 
 public class Main {
@@ -6,18 +10,18 @@ public class Main {
         boolean repeat = false;
         double result = 0.0;
 
-        Calculator calc = new Calculator();
+        ArithmeticCalculator calc = new ArithmeticCalculator();
 
         do {
             System.out.println("Enter number: ");
             int number1 = Integer.parseInt(sc.nextLine());
             System.out.println("Enter number: ");
             int number2 = Integer.parseInt(sc.nextLine());
-            System.out.println("Enter operand: ");
-            char operand = sc.nextLine().charAt(0);
+            System.out.println("Enter operator: ");
+            char operator = sc.nextLine().charAt(0);
 
             try {
-                result = calc.evaluateExpression(number1, number2, operand);
+                result = calc.evaluateExpression(number1, number2, Operator.fromChar(operator));
                 System.out.println("Result: " + result);
             } catch (Exception e) {
                 System.err.println(e.getMessage());

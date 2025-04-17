@@ -1,3 +1,5 @@
+package calculator;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.List;
@@ -6,10 +8,10 @@ import java.util.Optional;
 public class Calculator {
     private Deque<Double> history = new ArrayDeque<>();
 
-    public double evaluateExpression(int num1, int num2, char operand) {
+    public double evaluateExpression(int num1, int num2, char operator) {
         double result = 0.0;
 
-        switch (operand) {
+        switch (operator) {
             case '+':
                 result = num1 + num2;
                 break;
