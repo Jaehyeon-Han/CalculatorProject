@@ -8,10 +8,12 @@ import java.util.List;
 import java.util.Optional;
 
 public class ArithmeticCalculator {
-    private Deque<Double> history = new ArrayDeque<>();
+    private final Deque<Double> history = new ArrayDeque<>();
 
-    public double evaluateExpression(int num1, int num2, Operator operator) {
-        double result = 0.0;
+    public <T extends Number> double evaluateExpression(T number1, T number2, Operator operator) {
+        double num1 = number1.doubleValue();
+        double num2 = number2.doubleValue();
+        double result;
 
         switch (operator) {
             case PLUS:
@@ -21,7 +23,7 @@ public class ArithmeticCalculator {
                 result = num1 - num2;
                 break;
             case DIV:
-                result = (double) num1 / num2;
+                result = num1 / num2;
                 break;
             case MUL:
                 result = num1 * num2;

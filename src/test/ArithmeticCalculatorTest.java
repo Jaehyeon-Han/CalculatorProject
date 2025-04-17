@@ -51,6 +51,12 @@ class ArithmeticCalculatorTest {
     }
 
     @Test
+    void doubleInputEvaluation() {
+        double plusResult = calc.evaluateExpression(1.3, 2.5, Operator.fromChar('+'));
+        assertEquals(3.8, plusResult);
+    }
+
+    @Test
     void removeOldestHistory() {
         calc.evaluateExpression(0, 1, Operator.fromChar('+'));
         calc.evaluateExpression(0, 2, Operator.fromChar('+'));
