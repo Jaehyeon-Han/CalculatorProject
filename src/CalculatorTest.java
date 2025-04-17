@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
@@ -46,5 +48,13 @@ class CalculatorTest {
 
     @Test
     void removeOldestHistory() {
+        calc.evaluateExpression(0, 1, '+');
+        calc.evaluateExpression(0, 2, '+');
+        calc.evaluateExpression(0, 3, '+');
+
+        assertEquals(List.of(1.0, 2.0, 3.0), calc.getHistory());
+
+        calc.removeOldestHistory();
+        assertEquals(List.of(2.0, 3.0), calc.getHistory());
     }
 }

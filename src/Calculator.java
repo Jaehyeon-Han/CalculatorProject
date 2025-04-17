@@ -1,5 +1,6 @@
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.List;
 import java.util.Optional;
 
 public class Calculator {
@@ -33,4 +34,13 @@ public class Calculator {
         Double oldestHistory = history.pollFirst();
         return Optional.ofNullable(oldestHistory);
     }
+
+    public List<Double> getHistory() {
+        return history.stream().toList();
+    }
+
+    // 세터를 허용하는 게 필요?
+    /*public void setHistory(Deque<Double> history) {
+        this.history = history;
+    }*/
 }

@@ -26,5 +26,12 @@ public class Main {
             System.out.println("Enter \"exit\" to stop");
             repeat = !sc.nextLine().equals("exit");
         } while(repeat);
+
+        System.out.println("Printing current history");
+        System.out.println(calc.getHistory());
+
+        calc.removeOldestHistory();
+        System.out.println("Printing history after deleting first");
+        System.out.println(calc.getHistory());
     }
 }
