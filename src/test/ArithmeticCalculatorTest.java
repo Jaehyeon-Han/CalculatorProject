@@ -67,4 +67,13 @@ class ArithmeticCalculatorTest {
         calc.removeOldestHistory();
         assertEquals(List.of(2.0, 3.0), calc.getHistory());
     }
+
+    @Test
+    void getHistoryGreaterThan() {
+        calc.evaluateExpression(0, 1, Operator.fromChar('+'));
+        calc.evaluateExpression(0, 2, Operator.fromChar('+'));
+        calc.evaluateExpression(0, 3, Operator.fromChar('+'));
+
+        assertEquals(List.of(2.0, 3.0), calc.getHistoryGreaterThan(1.5));
+    }
 }

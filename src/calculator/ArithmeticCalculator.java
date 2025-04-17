@@ -44,4 +44,8 @@ public class ArithmeticCalculator {
     public List<Double> getHistory() {
         return history.stream().toList();
     }
+
+    public List<Double> getHistoryGreaterThan(double exclusiveLowerBound) {
+        return history.stream().filter(n -> n > exclusiveLowerBound).toList();
+    }
 }

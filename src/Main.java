@@ -1,5 +1,4 @@
 import calculator.ArithmeticCalculator;
-import calculator.Calculator;
 import operator.Operator;
 
 import java.util.Scanner;
@@ -37,5 +36,9 @@ public class Main {
         calc.removeOldestHistory();
         System.out.println("Printing history after deleting first");
         System.out.println(calc.getHistory());
+
+        double exclusiveLowerBound = 2.0;
+        System.out.println("Printing history greater than " + exclusiveLowerBound);
+        System.out.println(calc.getHistoryGreaterThan(exclusiveLowerBound));
     }
 }
