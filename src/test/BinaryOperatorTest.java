@@ -1,7 +1,9 @@
 package test;
 
 import operator.BinaryOperator;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 class OperatorTest {
@@ -16,6 +18,9 @@ class OperatorTest {
         assertEquals(BinaryOperator.MINUS, minus);
         assertEquals(BinaryOperator.MUL, mul);
         assertEquals(BinaryOperator.DIV, div);
+        assertThrows(IllegalArgumentException.class, () -> {
+            BinaryOperator.fromChar('&');
+        });
     }
 
     @Test
