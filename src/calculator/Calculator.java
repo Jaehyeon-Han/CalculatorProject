@@ -1,3 +1,5 @@
+package calculator;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Optional;
@@ -32,5 +34,13 @@ public class Calculator {
     public Optional<Double> removeOldestHistory() {
         Double oldestHistory = history.pollFirst();
         return Optional.ofNullable(oldestHistory);
+    }
+
+    public Deque<Double> getHistory() {
+        return history;
+    }
+
+    public void setHistory(Deque<Double> history) {
+        this.history = history;
     }
 }
