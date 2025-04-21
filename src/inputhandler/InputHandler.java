@@ -24,8 +24,6 @@ public class InputHandler {
                 return Double.parseDouble(sc.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Invalid number. Try again.");
-            } catch (NullPointerException e) {
-                System.out.println("Empty input is not allowed.");
             }
         }
     }

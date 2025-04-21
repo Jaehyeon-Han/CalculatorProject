@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class OperatorTest {
+class BinaryOperatorTest {
     BinaryOperator plus = BinaryOperator.fromChar('+');
     BinaryOperator minus = BinaryOperator.fromChar('-');
     BinaryOperator mul = BinaryOperator.fromChar('*');
