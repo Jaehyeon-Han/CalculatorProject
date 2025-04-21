@@ -1,7 +1,7 @@
 package test;
 
 import calculator.ArithmeticCalculator;
-import operator.Operator;
+import operator.BinaryOperator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,47 +20,47 @@ class ArithmeticCalculatorTest {
     @Test
     void evaluateExpression() {
         // +
-        double plusResult = calc.evaluateExpression(1, 2, Operator.fromChar('+'));
+        double plusResult = calc.evaluateExpression(1, 2, BinaryOperator.fromChar('+'));
         assertEquals(3, plusResult);
 
         // -
-        double minusResult1 = calc.evaluateExpression(1, 2, Operator.fromChar('-'));
-        double minusResult2 = calc.evaluateExpression(3, 2, Operator.fromChar('-'));
+        double minusResult1 = calc.evaluateExpression(1, 2, BinaryOperator.fromChar('-'));
+        double minusResult2 = calc.evaluateExpression(3, 2, BinaryOperator.fromChar('-'));
 
         assertEquals(-1, minusResult1);
         assertEquals(1, minusResult2);
 
         // *
-        double multiplyResult1 = calc.evaluateExpression(2, 5, Operator.fromChar('*'));
-        double multiplyResult2 = calc.evaluateExpression(3, -9, Operator.fromChar('*'));
+        double multiplyResult1 = calc.evaluateExpression(2, 5, BinaryOperator.fromChar('*'));
+        double multiplyResult2 = calc.evaluateExpression(3, -9, BinaryOperator.fromChar('*'));
 
         assertEquals(10, multiplyResult1);
         assertEquals(-27, multiplyResult2);
 
         // /
-        double divisionResult1 = calc.evaluateExpression(1, 2, Operator.fromChar('/'));
-        double divisionResult2 = calc.evaluateExpression(100, 0, Operator.fromChar('/'));
-        double divisionResult3 = calc.evaluateExpression(0, 0, Operator.fromChar('/'));
+        double divisionResult1 = calc.evaluateExpression(1, 2, BinaryOperator.fromChar('/'));
+        double divisionResult2 = calc.evaluateExpression(100, 0, BinaryOperator.fromChar('/'));
+        double divisionResult3 = calc.evaluateExpression(0, 0, BinaryOperator.fromChar('/'));
 
         assertEquals(0.5, divisionResult1);
         assertTrue(Double.isInfinite(divisionResult2));
         assertTrue(Double.isNaN(divisionResult3));
 
         // Unknown operand
-        assertThrows(RuntimeException.class, () -> calc.evaluateExpression(1, 2, Operator.fromChar('^')));
+        assertThrows(RuntimeException.class, () -> calc.evaluateExpression(1, 2, BinaryOperator.fromChar('^')));
     }
 
     @Test
     void doubleInputEvaluation() {
-        double plusResult = calc.evaluateExpression(1.3, 2.5, Operator.fromChar('+'));
+        double plusResult = calc.evaluateExpression(1.3, 2.5, BinaryOperator.fromChar('+'));
         assertEquals(3.8, plusResult);
     }
 
     @Test
     void removeOldestHistory() {
-        calc.evaluateExpression(0, 1, Operator.fromChar('+'));
-        calc.evaluateExpression(0, 2, Operator.fromChar('+'));
-        calc.evaluateExpression(0, 3, Operator.fromChar('+'));
+        calc.evaluateExpression(0, 1, BinaryOperator.fromChar('+'));
+        calc.evaluateExpression(0, 2, BinaryOperator.fromChar('+'));
+        calc.evaluateExpression(0, 3, BinaryOperator.fromChar('+'));
 
         assertEquals(List.of(1.0, 2.0, 3.0), calc.getHistory());
 
@@ -70,9 +70,9 @@ class ArithmeticCalculatorTest {
 
     @Test
     void getHistoryGreaterThan() {
-        calc.evaluateExpression(0, 1, Operator.fromChar('+'));
-        calc.evaluateExpression(0, 2, Operator.fromChar('+'));
-        calc.evaluateExpression(0, 3, Operator.fromChar('+'));
+        calc.evaluateExpression(0, 1, BinaryOperator.fromChar('+'));
+        calc.evaluateExpression(0, 2, BinaryOperator.fromChar('+'));
+        calc.evaluateExpression(0, 3, BinaryOperator.fromChar('+'));
 
         assertEquals(List.of(2.0, 3.0), calc.getHistoryGreaterThan(1.5));
     }

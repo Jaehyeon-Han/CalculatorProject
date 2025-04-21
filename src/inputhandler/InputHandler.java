@@ -1,6 +1,6 @@
 package inputhandler;
 
-import operator.Operator;
+import operator.BinaryOperator;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -30,14 +30,14 @@ public class InputHandler {
         }
     }
 
-    public Operator getOperator() {
+    public BinaryOperator getOperator() {
         String input;
 
         while(true) {
             System.out.println("Enter operator: ");
             try {
                 input = sc.nextLine();
-                return Operator.fromChar(input.charAt(0));
+                return BinaryOperator.fromChar(input.charAt(0));
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Empty input is not allowed.");
             } catch (IllegalArgumentException e) {
