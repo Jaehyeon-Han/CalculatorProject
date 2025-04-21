@@ -18,7 +18,12 @@ public enum Operator {
         map.put('/', DIV);
     }
 
-    public static Operator fromChar(char operator) {
-        return map.get(operator);
+    public static Operator fromChar(char operatorChar) {
+        Operator operator = map.get(operatorChar);
+        if(operator == null) {
+            throw new IllegalArgumentException();
+        }
+
+        return operator;
     }
 }

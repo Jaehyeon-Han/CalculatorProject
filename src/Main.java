@@ -1,44 +1,49 @@
 import calculator.ArithmeticCalculator;
+import inputhandler.InputHandler;
 import operator.Operator;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        ArithmeticCalculator calc = new ArithmeticCalculator();
+        InputHandler inputHandler = new InputHandler();
+
         boolean repeat = false;
         double result = 0.0;
 
-        ArithmeticCalculator calc = new ArithmeticCalculator();
-
         do {
-            System.out.println("Enter number: ");
-            int number1 = Integer.parseInt(sc.nextLine());
-            System.out.println("Enter number: ");
-            int number2 = Integer.parseInt(sc.nextLine());
-            System.out.println("Enter operator: ");
-            char operator = sc.nextLine().charAt(0);
+            double number1 = inputHandler.getNumber();
+            double number2 = inputHandler.getNumber();
+            Operator operator = inputHandler.getOperator();
 
             try {
-                result = calc.evaluateExpression(number1, number2, Operator.fromChar(operator));
+                result = calc.evaluateExpression(number1, number2, operator);
                 System.out.println("Result: " + result);
             } catch (Exception e) {
                 System.err.println(e.getMessage());
             }
 
-            System.out.println("Enter \"exit\" to stop");
-            repeat = !sc.nextLine().equals("exit");
+            repeat = !inputHandler.wantToTerminate();
         } while(repeat);
 
-        System.out.println("Printing current history");
-        System.out.println(calc.getHistory());
+        checkHistoryFunctions(calc);
+    }
+
+    private static void checkHistoryFunctions(ArithmeticCalculator calc) {
+        printHistory(calc.getHistory());
 
         calc.removeOldestHistory();
-        System.out.println("Printing history after deleting first");
-        System.out.println(calc.getHistory());
+        printHistory(calc.getHistory());
 
         double exclusiveLowerBound = 2.0;
-        System.out.println("Printing history greater than " + exclusiveLowerBound);
-        System.out.println(calc.getHistoryGreaterThan(exclusiveLowerBound));
+        printHistory(calc.getHistoryGreaterThan(exclusiveLowerBound));
+    }
+
+    private static void printHistory(List<Double> history) {
+        System.out.println("Printing current history");
+        System.out.println(history);
     }
 }
