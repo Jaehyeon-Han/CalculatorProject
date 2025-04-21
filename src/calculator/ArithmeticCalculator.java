@@ -13,7 +13,7 @@ public class ArithmeticCalculator {
     public <T extends Number> double evaluateExpression(T number1, T number2, Operator operator) {
         double num1 = number1.doubleValue();
         double num2 = number2.doubleValue();
-        double result;
+        double result = 0.0;
 
         switch (operator) {
             case PLUS:
@@ -28,8 +28,6 @@ public class ArithmeticCalculator {
             case MUL:
                 result = num1 * num2;
                 break;
-            default:
-                throw new RuntimeException("Unknown operand");
         }
 
         history.offer(result);
@@ -46,6 +44,9 @@ public class ArithmeticCalculator {
     }
 
     public List<Double> getHistoryGreaterThan(double exclusiveLowerBound) {
-        return history.stream().filter(n -> n > exclusiveLowerBound).toList();
+        return history.stream()
+                .filter(Double::isFinite)
+                .filter(n -> n > exclusiveLowerBound)
+                .toList();
     }
 }
