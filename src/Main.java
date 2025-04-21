@@ -10,24 +10,27 @@ public class Main {
             int number1 = Integer.parseInt(sc.nextLine());
             System.out.println("Enter number: ");
             int number2 = Integer.parseInt(sc.nextLine());
-            System.out.println("Enter operand: ");
-            char operand = sc.nextLine().charAt(0);
+            System.out.println("Enter operator: ");
+            char operator = sc.nextLine().charAt(0);
 
             int result = 0;
             try {
-                switch(operand) {
+                switch(operator) {
                     case '+': result = number1 + number2; break;
                     case '-': result = number1 - number2; break;
                     case '/': result = number1 / number2; break;
                     case '*': result = number1 * number2; break;
-                    default: throw new Exception("Unknown operand");
+                    default: throw new IllegalArgumentException("Unknown operator");
                 }
-            } catch (Exception e) {
+            } catch (ArithmeticException e) {
+                System.err.println("can't divide by 0");
+            }
+            catch (IllegalArgumentException e) {
                 System.err.println(e.getMessage());
             }
 
             System.out.println("Result: " + result);
-            System.out.println("Enter \"exit\" to stop");
+            System.out.println("Enter \"exit\" to terminate");
             repeat = !sc.nextLine().equals("exit");
         } while(repeat);
     }
