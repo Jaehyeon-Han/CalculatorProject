@@ -1,6 +1,6 @@
 package inputhandler;
 
-import operator.BinaryOperator;
+import operator.DoubleBinaryOperator;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -16,7 +16,6 @@ public class InputHandler {
         sc = new Scanner(System.in);
     }
 
-    // 테스트 불가능??
     public double getNumber()  {
         while(true) {
             System.out.println("Enter number: ");
@@ -28,14 +27,14 @@ public class InputHandler {
         }
     }
 
-    public BinaryOperator getOperator() {
+    public DoubleBinaryOperator getDoubleBinaryOperator() {
         String input;
 
         while(true) {
             System.out.println("Enter operator: ");
             try {
                 input = sc.nextLine();
-                return BinaryOperator.fromChar(input.charAt(0));
+                return DoubleBinaryOperator.fromChar(input.charAt(0));
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Empty input is not allowed.");
             } catch (IllegalArgumentException e) {
@@ -44,7 +43,7 @@ public class InputHandler {
         }
     }
 
-    public boolean wantToTerminate() {
+    public boolean checkForExit() {
         System.out.println("Enter \"exit\" to terminate");
         String input = sc.nextLine();
         return input.equals("exit");

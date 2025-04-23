@@ -1,6 +1,6 @@
 import calculator.ArithmeticCalculator;
 import inputhandler.InputHandler;
-import operator.BinaryOperator;
+import operator.DoubleBinaryOperator;
 
 import java.util.List;
 
@@ -12,26 +12,26 @@ public class Main {
         do {
             double number1 = inputHandler.getNumber();
             double number2 = inputHandler.getNumber();
-            BinaryOperator binaryOperator = inputHandler.getOperator();
+            DoubleBinaryOperator doubleBinaryOperator = inputHandler.getDoubleBinaryOperator();
 
-            System.out.println("Result: " + calc.evaluateExpression(number1, number2, binaryOperator));
-        } while (!inputHandler.wantToTerminate());
+            System.out.println("Result: " + calc.evaluateExpression(number1, number2, doubleBinaryOperator));
+        } while (!inputHandler.checkForExit());
 
         checkHistoryFunctions(calc);
     }
 
     private static void checkHistoryFunctions(ArithmeticCalculator calc) {
-        printHistory(calc.getHistory());
+        printHistory("Printing current history", calc.getHistory());
 
         calc.removeOldestHistory();
-        printHistory(calc.getHistory());
+        printHistory("Printing history after removing first", calc.getHistory());
 
-        double exclusiveLowerBound = 2.0;
-        printHistory(calc.getHistoryGreaterThan(exclusiveLowerBound));
+        double exclusiveLowerBound = 5.0;
+        printHistory("Printing history greater than " + exclusiveLowerBound, calc.getHistoryGreaterThan(exclusiveLowerBound));
     }
 
-    private static void printHistory(List<Double> history) {
-        System.out.println("Printing current history");
+    private static void printHistory(String message, List<Double> history) {
+        System.out.println(message);
         System.out.println(history);
     }
 }

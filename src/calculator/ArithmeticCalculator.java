@@ -1,6 +1,6 @@
 package calculator;
 
-import operator.BinaryOperator;
+import operator.DoubleBinaryOperator;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -10,10 +10,10 @@ import java.util.Optional;
 public class ArithmeticCalculator {
     private final Deque<Double> history = new ArrayDeque<>();
 
-    public <T extends Number> double evaluateExpression(T number1, T number2, BinaryOperator binaryOperator) {
+    public <T extends Number> double evaluateExpression(T number1, T number2, DoubleBinaryOperator doubleBinaryOperator) {
         double num1 = number1.doubleValue();
         double num2 = number2.doubleValue();
-        double result = binaryOperator.apply(num1, num2);
+        double result = doubleBinaryOperator.apply(num1, num2);
 
         history.offer(result);
         return result;
